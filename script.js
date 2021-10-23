@@ -87,10 +87,8 @@ var upperCasedCharacters = [
 ];
 
 
-
-var generateBtn = document.querySelector("#generate");
-function generatePassword(){
-  // generatePassword 8-128 characters
+function getuseroptions(){
+ // generatePassword 8-128 characters
   //  what type of character does the user want
   var passwordLength= prompt("what length does user want between 8-128 characters")
   var confirmUpperCase= confirm( "does user want to use uppercase")
@@ -100,11 +98,23 @@ function generatePassword(){
 
 var useroptions= {
   passwordLength:passwordLength,
-  confirmLowerCase:
-  confirmUpperCase:
-  confirmNumericCharacters:
-  confirmSpecialCharacters:
+  confirmLowerCase:confirmLowerCase,
+  confirmUpperCase:confirmUpperCase,
+  confirmNumericCharacters:confirmNumericCharacters,
+  confirmSpecialCharacters:confirmSpecialCharacters,
 
+}
+useroptions.passwordLength=passwordLength
+useroptions.confirmLowerCase=confirmLowerCase
+useroptions.confirmUpperCase=confirmUpperCase
+useroptions.confirmNumericCharacters=confirmNumericCharacters
+useroptions.confirmSpecialCharacters=confirmSpecialCharacters
+return useroptions
+} 
+
+var generateBtn = document.querySelector("#generate");
+function generatePassword(){
+ 
 
 }
 
