@@ -113,20 +113,63 @@ return useroptions
 } 
 
 var generateBtn = document.querySelector("#generate");
-function generatePassword(){
- 
+function generatePassword(
+  generatelowercase,
+  generateuppercase,
+  generatenumericCharacters,
+  generatespecialCharacters)
+{
+ var useroptions=getuseroptions()
+ var userarray=[]
+ var confirmedarray=[]
+ var possiblearray=[]
+ if (useroptions.confirmLowerCase){
+   confirmedarray.push(lowerCasedCharacters[Math.floor(Math.random()*lowerCasedCharacters.length)])
+   possiblearray=possiblearray.concat(lowerCasedCharacters)
+ }
+ if (useroptions.confirmUpperCase){
+   confirmedarray.push(upperCasedCharacters[Math.floor(Math.random()*upperCasedCharacters.length)])
+   possiblearray=possiblearray.concat(upperCasedCharacters)
+ }
+if (useroptions.confirmNumericCharacters){
+  confirmedarray.push(numericCharacters[Math.floor(Math.random()*numericCharacters.length)])
+  possiblearray=possiblearray.concat(numericCharacters)
+}
+if (useroptions.confirmSpecialCharacters){
+  confirmedarray.push(specialCharacters[Math.floor(Math.random()*specialCharacters.length)])
+  possiblearray=possiblearray.concat(specialCharacters)
+  }
+  console.log("confirmedarray",confirmedarray)
 
+for(var i=0;i<useroptions.passwordLength;i++){
+  // console.log("hello")
+  // userarray.push(confirmedarray[Math.floor(Math.random()*confirmedarray.length)])
+  var possiblecharacter=possiblearray[Math.floor(Math.random()*possiblearray.length)]
+  userarray.push(possiblecharacter)
+}
+ console.log(useroptions)
+console.log(userarray)
+for (var i=0;i<confirmedarray.length;i++){
+  userarray[i]=confirmedarray[i]
+}
+return userarray.join("")
 }
 
-}
+
 // Write password to the #password input
-function writePassword() {
+function writePassword(
+) 
+    {
   var password = generatePassword();
+ 
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+  
 
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
